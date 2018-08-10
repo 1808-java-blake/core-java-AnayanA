@@ -371,7 +371,7 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
+		ArrayList<Long> factor = new ArrayList<Long>();
 		return null;
 	}
 
@@ -449,26 +449,27 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
-//		int prime = 1;
-//		int count = 3;
-//		double t = 0.0;
-//		if(i ==0)
-//			throw new IllegalArgumentException();
-//		else if(i == 1)
-//			return 2;
-//		else {
-//
-//			while (prime  != i) {
-//				for(int j = count - 1; j>= 1; j--) {
-//					t *= j;
-//				}
-//				t += 1;
-//				if(t%count == (long)t%count)
-//					prime++;
-//				count+=2;
-//			}
-//		}
-		return 0;
+		int prime = 0;
+		int count = 1;
+		double t = 0.0;
+		if(i ==0)
+			throw new IllegalArgumentException();
+		else if(i == 1)
+			return 2;
+		else {
+
+			while (prime  != i) {
+				t = 0;
+				count+=2;
+				for(int j = count - 1; j> 1; j--) {
+					t *= j;
+				}
+				t += 1;
+				if(t%count == (int)t%count)
+					prime++;
+			}
+		}
+		return count;
 	}
 
 	/**
@@ -666,8 +667,23 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		
-		return 0;
+		int match = 0;
+		int sum = 0;
+		ArrayList<Integer> jail = new ArrayList<Integer>();
+		for(int j = 0; j < set.length; j++) {
+			int inc = 0;
+			match = 0;
+			while (match < i) {
+				inc++;
+				match = set[j]*inc;
+				if(match < i)
+					if(jail.contains(match) == false) {
+						jail.add(match);
+						sum += match;
+					}
+			}
+		}
+		return sum;
 	}
 
 	/**
