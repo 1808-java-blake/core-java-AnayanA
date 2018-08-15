@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -371,8 +373,20 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		ArrayList<Long> factor = new ArrayList<Long>();
-		return null;
+		List<Long> factor = new ArrayList<Long>();
+		long rem = l;
+		long i = 2;
+		while(i != l) {
+			while(rem%i != 0) {
+				factor.add(i);
+				rem = rem%i;
+			}
+			if(i == 2)
+				i++;
+			else
+				i+= 2;
+		}
+		return factor;
 	}
 
 	/**
